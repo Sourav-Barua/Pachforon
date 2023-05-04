@@ -7,11 +7,13 @@ import Contact from "../components/Contact/Contact";
 import About from "../components/About/About";
 import Login from "../components/Login/Login";
 import Registration from "../components/Registration/Registration";
+import Error from "../components/ErrorPage/Error";
 
 export const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <Error />,
         children: [
             {
                 path: '/',
