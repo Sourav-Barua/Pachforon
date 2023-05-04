@@ -1,3 +1,4 @@
+import Banner from "../Banner/Banner";
 import Chefs from "../Chefs/Chefs";
 
 const Home = () => {
@@ -5,6 +6,7 @@ const Home = () => {
 
     return (
         <div>
+            <Banner/>
             <Chefs />
         </div>
     );
