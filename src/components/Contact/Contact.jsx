@@ -8,7 +8,7 @@ const Contact = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div>
                             <h1 className="text-3xl md:text-4xl font-bold mb-8">Contact Us</h1>
-                            <p className="text-lg mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut ante euismod, faucibus libero sed, bibendum sapien. Fusce dignissim ullamcorper diam, eu volutpat est pulvinar at.</p>
+                            <p className="text-lg mb-4">Thank you for your interest in contacting us. We value your feedback, questions, and concerns and we would love to hear from you. Our team is dedicated to providing excellent customer service and we are always ready to assist you in any way we can.</p>
                             <p className="text-lg mb-4">Email: info@yourdomain.com</p>
                             <p className="text-lg mb-4">Phone: 555-555-5555</p>
                             <p className="text-lg mb-4">Address: 123 Main Street, Anytown, USA</p>
