@@ -41,7 +41,7 @@ const Login = () => {
                         <div>
                             <p className="text-sm text-gray-500">
                                 No account?
-                                <NavLink to="/Register" className="text-sky-400">Register</NavLink>
+                                <NavLink to="/register" className="text-sky-400">Register</NavLink>
 
                             </p>
                         </div>
