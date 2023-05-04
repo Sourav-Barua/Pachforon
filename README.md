@@ -27,7 +27,7 @@ I'm a full stack developer...
 
 ## Netlify link :
 
-+ Netlify live site : https://sparkling-manatee-d382e2.netlify.app/?fbclid=IwAR1M-ozz0X_dB7U6liVDsxXiD513giIU8hDobzSm0xTdcVpiMF9pniTECjE
++ Netlify live site : https://sparkling-manatee-d382e2.netlify.app/
 ## Features
 + Login / Registration
 + Navbar,Banner, Footer
