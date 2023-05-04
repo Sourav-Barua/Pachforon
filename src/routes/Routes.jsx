@@ -5,6 +5,7 @@ import ChefDetails from "../components/Chefs/ChefDetails";
 import Blog from "../components/Blog/Blog";
 import Contact from "../components/Contact/Contact";
 import About from "../components/About/About";
+import Login from "../components/Login/Login";
 
 export const router = createBrowserRouter([
     {
@@ -35,6 +36,10 @@ export const router = createBrowserRouter([
             {
                 path: '/about',
                 element: <About></About>
+            },
+            {
+                path: '/login',
+                element: <Login />
             },
         ]
     }

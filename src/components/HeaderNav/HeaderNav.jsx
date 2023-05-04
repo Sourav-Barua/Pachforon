@@ -14,6 +14,7 @@ const HeaderNav = () => {
         { path: '/blog', name: 'Blog' },
         { path: '/about', name: 'About' },
         { path: '/contact', name: 'Contact' },
+        { path: '/login', name: 'Login' },
     ];
 
     return (

@@ -1,5 +1,3 @@
-
-
 const Contact = () => {
     return (
         <div>
@@ -24,9 +22,10 @@ const Contact = () => {
                                 <button className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300">Send</button>
                             </form>
                         </div>
+
                     </div>
                 </section>
-
+               
             </div>
         </div>
     );
