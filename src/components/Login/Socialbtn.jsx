@@ -1,9 +1,47 @@
+import { getAuth, GoogleAuthProvider, signInWithPopup, GithubAuthProvider } from "firebase/auth";
+import app from "../../Firebase/firebase.config";
+import { useState } from "react";
+
+
 
 const Socialbtn = () => {
+    const [user, setUser] = useState({});
+    const auth = getAuth(app);
+    const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
+
+    const handleGoogleLogin = () => {
+        signInWithPopup(auth, googleProvider)
+            .then((result) => {
+                const user = result.user;
+                setUser(user);
+                console.log(user)
+            }).catch((error) => {
+                const errorMessage = error.message;
+                console.log(errorMessage)
+            });
+    };
+
+    const handleGithubLogin = () => {
+        signInWithPopup(auth, githubProvider)
+            .then((result) => {
+                const user = result.user;
+                console.log(user)
+            
+            }).catch((error) => {
+
+                const errorMessage = error.message;
+            });
+    };
+
+
+
+
     return (
         <div>
 
             <button
+                onClick={handleGoogleLogin}
                 className="flex items-center justify-center px-4 py-2 mt-4 mb-4 font-medium text-white bg-red-600 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
             >
                 <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -21,6 +59,7 @@ const Socialbtn = () => {
 
 
             <button
+            onClick={handleGithubLogin}
                 className="flex items-center justify-center px-4 py-2 font-medium text-white bg-gray-800 rounded-md hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
             >
                 <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
