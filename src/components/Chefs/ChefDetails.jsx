@@ -1,9 +1,9 @@
 import { useLoaderData } from "react-router-dom";
-import { useState } from "react";
-
+// eslint-disable-next-line no-unused-vars
+import React, { useState } from 'react';
 import { FaHeart } from 'react-icons/fa';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import './Chefdetails.css'
+
 
 
 
@@ -16,10 +16,18 @@ const ChefDetails = () => {
     const [isDisabled, setIsDisabled] = useState(false);
 
     const handleClick = () => {
+        // Show toast message
+        const toast = document.createElement("div");
+        toast.innerHTML = "Recipe added to favorites!";
+        toast.classList.add("toast");
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 3000);
+
+        // Set isFavorite to true and disable the button
         setIsFavorite(true);
         setIsDisabled(true);
-        toast.success('This recipe is now your favorite!');
     };
+
 
 
     const { chefName, chefPicture, recipes, yearsOfExperience, likes, Recipe1, Recipe2, Recipe3 } = chefDetails;
@@ -43,106 +51,123 @@ const ChefDetails = () => {
                 <p className="text-lg"><span className="font-semibold">Total Recipes: </span>{recipes}</p>
                 <p className="text-lg"><span className="font-semibold">Years of Experience: </span>{yearsOfExperience} years</p>
                 <p className="text-lg"><span className="font-semibold">{likes}</span> person like this chef</p>
-                <div tabIndex={0} className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box w-3/4 mx-auto">
-                    <div className="collapse-title text-xl font-medium">
-                        <div className="collapse-title text-xl font-medium">
-                            <div className="flex justify-around">
-                                <h1>{Recipe1.recipeName}</h1>
-                                <button
-                                    onClick={handleClick}
-                                    disabled={isDisabled}
-                                >
-                                    <FaHeart
-                                        className={`text-2xl cursor-pointer ${isFavorite ? 'text-red-500' : 'text-gray-500'}`}
-                                    />
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="collapse-content">
-                        <p><span className="font-semibold">Rating:</span> {Recipe1.rating}</p>
-                        <ul>
-                            <span className="font-semibold text-sky-400">Ingredient:</span>
-                            {ingredients.map((ingredient, index) => (
-                                <li key={index}>{`${index + 1}. ${ingredient}`}</li>
-                            ))}
-                        </ul>
-                        <ul>
-                            <span className="font-semibold text-sky-400">Cooking Mathod:</span>
-                            {cookingMahod.map((cookingMahod, index) => (
-                                <li key={index}>{`${index + 1}. ${cookingMahod}`}</li>
-                            ))}
-                        </ul>
-                    </div>
-                </div>
-                <div tabIndex={0} className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box w-3/4 mx-auto">
-                    <div className="collapse-title text-xl font-medium">
-                        <div className="flex justify-around">
-                            <h1>{Recipe2.recipeName}</h1>
-                            <button
-                                onClick={handleClick}
-                                disabled={isDisabled}
-                            >
-                                <FaHeart
-                                    className={`text-2xl cursor-pointer ${isFavorite ? 'text-red-500' : 'text-gray-500'}`}
-                                />
-                            </button>
-                        </div>
-                    </div>
-                    <div className="collapse-content">
-                        <p><span className="font-semibold text-sky-400">Rating:</span> {Recipe2.rating}</p>
-                        <ul>
-                            <span className="font-semibold">Ingredient:</span>
-                            {ingredients.map((ingredient, index) => (
-                                <li key={index}>{`${index + 1}. ${ingredient}`}</li>
-                            ))}
-                        </ul>
-                        <ul>
-                            <span className="font-semibold text-sky-400">Cooking Mathod:</span>
-                            {cookingMahod.map((cookingMahod, index) => (
-                                <li key={index}>{`${index + 1}. ${cookingMahod}`}</li>
-                            ))}
-                        </ul>
-                        {/*  */}
-                        <div className="w-64">
 
-                        </div>
+                {/* Table start */}
+                <div className="overflow-x-auto">
+                    <table className="table w-full">
+                        {/* head */}
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th> Recipe -1 </th>
+                                <th> Recipe -2 </th>
+                                <th> Recipe -3 </th>
 
-                    </div>
-                </div>
+                                <th>Favorite Btn</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {/* row 1 */}
+                            <tr>
+                                <th>Name</th>
+                                <th>{Recipe1.recipeName}</th>
+                                <th>{Recipe2.recipeName}</th>
+                                <th>{Recipe3.recipeName}</th>
+                                <td>
+                                    <div className="App">
+                                        <button className={` ${isFavorite ? 'disabled' : ''}`} onClick={handleClick} disabled={isDisabled}>
+                                            <FaHeart className="icon" />
+                                            {isFavorite ? '' : ''}
+                                        </button>
 
-                <div tabIndex={0} className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box w-3/4 mx-auto">
-                    <div className="collapse-title text-xl font-medium">
-                        <div className="collapse-title text-xl font-medium">
-                            <div className="flex justify-around">
-                                <h1>{Recipe3.recipeName}</h1>
-                                <button
-                                    onClick={handleClick}
-                                    disabled={isDisabled}
-                                >
-                                    <FaHeart
-                                        className={`text-2xl cursor-pointer ${isFavorite ? 'text-red-500' : 'text-gray-500'}`}
-                                    />
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="collapse-content">
-                        <p><span className="font-semibold">Rating:</span> {Recipe3.rating}</p>
-                        <ul>
-                            <span className="font-semibold text-sky-400">Ingredient:</span>
-                            {ingredients.map((ingredient, index) => (
-                                <li key={index}>{`${index + 1}. ${ingredient}`}</li>
-                            ))}
-                        </ul>
-                        <ul>
-                            <span className="font-semibold text-sky-400">Cooking Mathod:</span>
-                            {cookingMahod.map((cookingMahod, index) => (
-                                <li key={index}>{`${index + 1}. ${cookingMahod}`}</li>
-                            ))}
-                        </ul>
-                    </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            {/* row 2 */}
+                            <tr>
+                                <th>Rating</th>
+                                <td>{Recipe1.rating}</td>
+                                <td>{Recipe2.rating}</td>
+                                <td>{Recipe3.rating}</td>
+
+                                <td>
+                                    <button className={` ${isFavorite ? 'disabled' : ''}`} onClick={handleClick} disabled={isDisabled}>
+                                        <FaHeart className="icon" />
+                                        {isFavorite ? '' : ''}
+                                    </button>
+                                </td>
+                            </tr>
+                            {/* row 3 */}
+                            <tr>
+                                <th>Ingredients</th>
+                                <td>
+                                    <ul>
+                                        {ingredients.map((ingredient, index) => (
+                                            <li key={index}>{`${index + 1}. ${ingredient}`}</li>
+                                        ))}
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        {ingredients.map((ingredient, index) => (
+                                            <li key={index}>{`${index + 1}. ${ingredient}`}</li>
+                                        ))}
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        {ingredients.map((ingredient, index) => (
+                                            <li key={index}>{`${index + 1}. ${ingredient}`}</li>
+                                        ))}
+                                    </ul>
+                                </td>
+                                <td>
+                                    <button className={` ${isFavorite ? 'disabled' : ''}`} onClick={handleClick} disabled={isDisabled}>
+                                        <FaHeart className="icon" />
+                                        {isFavorite ? '' : ''}
+                                    </button>
+                                </td>
+                            </tr>
+                            {/* row 3 */}
+                            <tr>
+                                <th>Cooking Mathod</th>
+                                <td>
+                                    <ul>
+                                        {cookingMahod.map((cookingMahod, index) => (
+                                            <li key={index}>{`${index + 1}. ${cookingMahod}`}</li>
+                                        ))}
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        {cookingMahod.map((cookingMahod, index) => (
+                                            <li key={index}>{`${index + 1}. ${cookingMahod}`}</li>
+                                        ))}
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        {cookingMahod.map((cookingMahod, index) => (
+                                            <li key={index}>{`${index + 1}. ${cookingMahod}`}</li>
+                                        ))}
+                                    </ul>
+                                </td>
+                                <td>
+                                    <button className={` ${isFavorite ? 'disabled' : ''}`} onClick={handleClick} disabled={isDisabled}>
+                                        <FaHeart className="icon" />
+                                        {isFavorite ? '' : ''}
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
+                {/* Table End */}
+
+
+
+
+
             </div>
         </div>
     );

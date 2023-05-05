@@ -1,0 +1,28 @@
+.fav-btn {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #333;
+    border: 2px solid #333;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.fav-btn:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+.fav-btn.disabled {
+    background-color: #ccc;
+    border-color: #ccc;
+    color: #999;
+    cursor: not-allowed;
+}
+
+.icon {
+    margin-right: 10px;
+}
